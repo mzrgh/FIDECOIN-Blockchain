@@ -1,0 +1,93 @@
+/**
+ * Access control rules for the multi-brand Loaylty Network based on FIDECOIN fidecoin-network
+ */
+
+/* Rules: 
+ * Read: Members can read all trasactions
+ *       Stores can read only their own Transactions
+ *          Un cliente solo puede leer sus transacciones
+ * Escritura: Cualquier agente sólo puede hacer transacciones por él mimso 
+ */
+
+ rule ConsortiumAccess {
+    description: "Allow the Consortium full access"
+    participant: "es.gonzalezherrero.fidecoin.Consortium"
+    operation: ALL
+    resource: "es.gonzalezherrero.fidecoin.*"
+    action: ALLOW
+}
+ 
+rule Default {
+    description: "Default: Nobody can read Transactions"
+    participant: "es.gonzalezherrero.fidecoin.*"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: DENY
+}
+
+rule ConsortiumReadAllTransactions {
+    description: "Allow the Consortium read all Transactions"
+    participant: "es.gonzalezherrero.fidecoin.Consortium"
+    operation: READ
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: ALLOW
+}
+
+rule MemberReadAllTransactions {
+    description: "Allow a member read all Transactions"
+    participant: "es.gonzalezherrero.fidecoin.Member"
+    operation: READ
+    resource: "org.hyperledger.composer.system.HistorianRecord"
+    action: ALLOW
+}
+
+rule StoreReadOwnTransactions {
+    description: "Allow a Store read only own Transactions"
+    participant(m): "es.gonzalezherrero.fidecoin.Store"
+    operation: READ
+    resource(v): "org.hyperledger.composer.system.HistorianRecord"
+    condition: (v.participantInvoking.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule CustomerReadOwnTransactions {
+    description: "Allow a Customer read only own Transactions"
+    participant(m): "es.gonzalezherrero.fidecoin.Customer"
+    operation: READ
+    resource(v): "org.hyperledger.composer.system.HistorianRecord"
+    condition: (v.participantInvoking.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule TransactionOwner {
+    description: "Allow a member write own transactions by himself"
+    participant(m): "es.gonzalezherrero.fidecoin.User"
+    operation: CREATE
+    resource(v): "org.hyperledger.composer.system.HistorianRecord"
+    condition: (v.member.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule SystemACL {
+    description:  "System ACL to permit all access"
+    participant: "org.hyperledger.composer.system.Participant"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}

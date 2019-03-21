@@ -1,0 +1,69 @@
+/*
+ * Queries for the data model for the multi-brand Loaylty Network
+ *     based on FIDECOIN fidecoin-network
+ * Author: Raúl González Herrero
+ * Version: 0.1
+ */
+
+query selectStores {
+  description: "Select all Stores"
+  statement:
+      SELECT es.gonzalezherrero.fidecoin.Store 
+}
+
+query selectMemberStores {
+  description: "Select all Stores of a Member"
+  statement:
+      SELECT es.gonzalezherrero.fidecoin.Store 
+       WHERE (member == _$member)
+}
+
+query selectallTransactions {
+  description: "Select all Transactions"
+  statement:
+      SELECT org.hyperledger.composer.system.HistorianRecord FROM 
+HistorianRegistry
+}
+
+query selectCustomerTransactions {
+  description: "Select all Transactions of a Customer"
+  statement:
+      SELECT org.hyperledger.composer.system.HistorianRecord FROM 
+HistorianRegistry
+      WHERE (participantInvoking == _$customer) 
+}
+
+query selectStoreTransactions {
+  description: "Select all Transactions of a Store"
+  statement:
+        SELECT org.hyperledger.composer.system.HistorianRecord FROM 
+HistorianRegistry
+      WHERE (participantInvoking == _$store) 
+}
+
+query selectMemberTransactions {
+  description: "Select all Transactions of a Member not done in a Store"
+  statement:
+      SELECT org.hyperledger.composer.system.HistorianRecord FROM 
+HistorianRegistry WHERE ((transactionType == 'BuyFIDC' OR transactionType == 
+'SellFIDC') AND (participantInvoking == _$member) )
+}
+
+query findTranactionsLast6Months{ 
+  description: "Select all the Transaction in the last 6 months" 
+  statement: 
+    SELECT org.hyperledger.composer.system.HistorianRecord FROM 
+HistorianRegistry WHERE (transactionTimestamp >= _$6monthsDate) 
+}
+
+/*
+asset HistorianRecord identified by transactionId {
+  o String      transactionId
+  o String      transactionType
+  ‑‑> Transaction transactionInvoked
+  ‑‑> Participant participantInvoking  optional
+  ‑‑> Identity    identityUsed         optional
+  o Event[]       eventsEmitted        optional
+  o DateTime      transactionTimestamp
+}
+*/
