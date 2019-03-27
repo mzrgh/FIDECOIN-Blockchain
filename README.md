@@ -12,9 +12,11 @@ This program will be based on digital assets - FIDECOIN (FIDC) - created for thi
 <p align="center">
   <img src="img/system-scheme.png">
 </p>
+
 ### Description
 A private and permitted Blockchain system will be developed that allows the creation, assignment, redemption and exchange of "digital points" of loyalty between participating companies and customers, without the need for intermediaries and administrators of any kind.
 **Note** The blockchain network will have multiple members and partners
+
 ### Members taking part on this system
 * <u>Clients</u>: will be the people participating in the Loyalty program. Each customer will be identifiable through a Hash associated with their registration data.
 * <u>Partners</u>: will be the companies participating in the Loyalty program, where customers can make purchases to obtain goods or services. Each partner will have, in turn, one or more sales establishments (physical or online) where contact with customers is made.
