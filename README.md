@@ -23,11 +23,11 @@ A private and permitted Blockchain system will be developed that allows the crea
 * <u>Loyalty Manager Consortium</u>: It will be the non-profit association formed by the organizations described above.
 ### Types of Transactions
 * <u>Registry Transactions</u>:
-   1. Registration of a participating organization in the Loyalty consortium (new member)
+   * Registration of a participating organization in the Loyalty consortium (new member)
    * Registration of a retail establishment of the participating organization
    * Registration of customers who will participate in the system
 * <u>Asset Transfer Transactions</u>:
-   1. Sale of Loyalty assets, from the consortium to the partners, to be granted to their clients.
+   * Sale of Loyalty assets, from the consortium to the partners, to be granted to their clients.
    * Purchase of Loyalty assets to the participating partners by the consortium
    * Delivery of Loyalty assets (Issue) to the clients by the partners, in the form of rewards, for purchases made in their sales establishments.
    * Collection of Loyalty assets (Redemption) of the Clients by the partners, which will represent discounts on purchases made.
@@ -36,6 +36,6 @@ A private and permitted Blockchain system will be developed that allows the crea
 * [Hyperledger Composer v0.20.2](https://hyperledger.github.io/composer/latest/) Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier
 * [Hyperledger Fabric v1.4](https://hyperledger-fabric.readthedocs.io) Hyperledger Fabric is a platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability.
 ## Featured technology
-+ [Visual Studio Code] (https://code.visualstudio.com/) Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity)
++ [Visual Studio Code](https://code.visualstudio.com/) Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity)
 + [Nodejs](https://nodejs.org/) Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code server-side
 + [Bootstrap](https://getbootstrap.com/) Bootstrap is an open source toolkit for developing with HTML, CSS, and JS
